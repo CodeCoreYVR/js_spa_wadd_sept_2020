@@ -1,0 +1,22 @@
+<h1>All Questions</h1>
+<% if @tag.present? %>
+  <h6>
+    Showing questions tagged by 
+    <span class="badge badge-success">
+      <%= @tag.name %>
+    </span>
+  </h6>
+<% end %>
+
+<ul>
+  <% @questions.each do |question| %>
+    <li>
+      <div>
+        <%= link_to question.title, question_path(question) %>
+      </div>
+      <small>Asked <%= time_ago_in_words(question.created_at) %> ago</small>
+      |
+      <small>Viewed <%= pluralize(question.view_count, "time") %></small>
+    </li>
+  <% end%>
+</ul>

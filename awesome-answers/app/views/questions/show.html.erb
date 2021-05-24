@@ -1,0 +1,120 @@
+<h1><%= @question.title %></h1>
+
+<p><%= @question.body %></p>
+
+<p>
+  Viewed <%= pluralize(@question.view_count, 'time') %>
+</p>
+<p>
+  Asked <%= time_ago_in_words(@question.created_at) %> ago 
+  by <%= @question.user&.full_name || "[deleted]" %>
+</p>
+<p>
+  Last edited <%= time_ago_in_words(@question.updated_at) %> ago
+  |
+  <%= pluralize(@question.likes.count, "like") %>
+</p>
+
+<div>
+  <%# 
+    @question.tags.map { |tag| tag.name }.join(", ")
+    Passing &:name to any enumerable method will call .name 
+    on each element. Below is the same as above:
+    @question.tags.map(&:name).join(", ") 
+  %>
+  <% @question.tags.each do |tag| %>
+    <%= link_to(
+      tag.name, 
+      questions_path(tag: tag.name),
+      class: "badge badge-success"
+    ) %>
+  <% end %>
+</div>
+
+<div>
+  <% if @like.present? %>
+    <%= 
+      link_to(
+        "Unlike",
+        question_like_path(@question, @like),
+        method: :delete
+      )
+    %>
+  <% else %>
+    <%= 
+      link_to(
+        "Like",
+        question_likes_path(@question),
+        method: :post
+      )
+    %>
+  <% end %>
+  |
+  <% if can?(:crud, @question) %>
+    <%= link_to 'Edit', edit_question_path(@question) %>
+    |
+    <%# 
+      Regular HTML links can only make GET requests. "link_to"
+      allows us to use other verbs such as DELETE. We pass a named
+      argument called "method" with the symbol of the HTTP verb as
+      an argument. If you confirm with the dialog then it will 
+      make the request.
+    %>
+    <%= link_to(
+        'Delete', 
+        question_path(@question),
+        method: :delete,
+        data: { confirm: "Are you sure you want to delete this question?"}
+      ) 
+    %>
+  <% end %>
+</div>
+<h2><%= @answers.count %> Answers</h2>
+
+<%# 
+  When two instances are added to model, it will generate a nested 
+  resource route e.g. question_answers_path(@question). If the @answer 
+  is not peristed, request will be a POST, and if it is then it will be a PATCH. 
+%>
+<%= form_with model: [@question, @answer], local: true do |form| %>
+  <% if @answer.errors.present? %>
+    <p>
+      <%= answers.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
+  <div>
+    <%= form.text_area(
+      :body,
+      cols: 50,
+      rows: 5,
+      placeholder: "Provide an answer..."
+    ) %>
+  </div>
+  <%= form.submit "Answer" %>
+<% end %>
+
+<ul>
+  <% @answers.each do |answer| %>
+    <li>
+      <p>
+        <%= answer.body %> <br>
+        <% if can?(:crud, answer) %>
+          <small>
+          <%= link_to(
+            'Delete', 
+            answer_path(answer),
+            method: :delete,
+            data: { confirm: "Are you sure?" }
+          ) %>
+          </small>
+        <% end %>
+        -
+        <small>
+          Answered <%= time_ago_in_words(answer.created_at) %> ago 
+          by <%= answer.user&.full_name || "[deleted]" %>
+        </small>
+      </p>
+    </li>
+  <% end %>
+</ul>
+

@@ -1,0 +1,28 @@
+<h1>Contact Us</h1>
+
+<!-- 
+  contact_path is a helper url generated for us from routes. It associates it to the
+  request of POST "/contact". This is the method and action that the form will
+  take when we submit the form. Use <%=  %> to render the form, but <%  %> to
+  end the block.
+
+  Passing a symbol to the label and input tag methods will add the "for", "id",
+  and "name" attributes with the value of the symbol. It will also display a 
+  capitalized value as the content for the <label>.
+-->
+<%= form_tag contact_path do %>
+  
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+  <div>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+  </div>
+  <div>
+    <%= label_tag :message %>
+    <%= text_area_tag :message %>
+  </div>
+  <%= submit_tag "Send Message" %>
+<% end %>

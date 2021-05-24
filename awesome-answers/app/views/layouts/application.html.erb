@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Awesome Answers</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <!-- "link_to" is a method known as a view helper. Use it to generate an anchor tag -->
+    <!-- <a href="/">Home</a> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Contact Us', contact_new_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'All Questions', questions_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'New Question', new_question_path, class: "nav-link" %>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <span class="nav-link">Hello, <%= current_user.full_name %></span>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Out', session_path, method: :delete, data: {confirm: "Log out?" }, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <hr>
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%=type %>" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+      
+      <!-- yield will render the template of the current controller action -->
+      <%= yield %>
+    </div>
+  </body>
+</html>

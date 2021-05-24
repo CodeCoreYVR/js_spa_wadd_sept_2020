@@ -1,0 +1,87 @@
+<%#
+  To create partials, we prefix the file name with an "_". When we 
+  render this from another view, we don't use the "_" in the name:
+  render "form"
+
+  To create a form for a resource (i.e. a model), use the 
+  "form_with" helper instead of the "form_tag". Its arguments are:
+  1. A named argument "model" which is assigned an instance of 
+    the model. This question instance will either be a new question
+    from the new action or an existing question from the edit
+    action. "form_with" checks to see if the instance of the 
+    question is persisted. If it is, upon submission of 
+    this form a PATCH request is made, otherwise it makes a POST.
+  2. A named argument "local". We set this to true so that it
+    doesn't submit the form using AJAX.
+  3. A block that is passed the form object as an argument where
+    we build the HTML inside of the form (e.g. labels, inputs,
+    submits). All data from the inputs in the form will be available
+    as name-value pairs nested in a hash named after the class of 
+    the passed model. e.g. { question: { title: "Hi", body: "Hello world" }}
+%>
+<%= form_with(model: @question, local: true) do |form| %>
+  <% if @question.errors.present? %>
+    <p>
+      <%= @question.errors.full_messages.join(", ") %>
+    </p>
+  <% end %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%# 
+      :tag_ids 
+        this is the method called on the @question e.g. @question.tag_ids
+        Only the tags in tags_id are selected in the checkbox. In the edit
+        form, @question is persisted and there will be some tags selected 
+        already, while a new @question will have none selected
+      Tag.all
+        This is the collection of objects to create checkboxes for
+      :id 
+        This is the value_method, which is called on each element of Tag.all.
+        The return value is what is used for the HTML value attribute
+        of this checkbox
+      :name
+        This is the text_method, which is called on each element of Tag.all.
+        The return value is what is used for the context of each checkbox tag,
+        used for box.text
+     %>
+      <%# form.collection_check_boxes :tag_ids, Tag.all, :id, :name do |box| %>
+        <%# span class="tag-wrapper" %> 
+          <%# box.check_box %>
+          <%# box.text %>
+        <%# /span> %>
+      <%# end %>
+    
+    <%= form.label :tag_names %>
+    <%= form.text_field :tag_names %>
+  </div>
+
+  <%# The argument to "submit" is the text displayed on the submmit button %>
+  <%= form.submit(@question.new_record? ? 'Create' : 'Update') %>
+<% end %>
+
+<script>
+  $(function(){
+    $('#question_tag_names').selectize({
+      delimeter: ',',
+      persist: false,
+      labelField:'name',
+      valueField: 'name',
+      searchField: 'name',
+      options: <%= Tag.select(:name).to_json(except:[:id]).html_safe %>,
+      // The above line selects only names from the tag table and converts them to a json array 
+      // of objects without including ids and make sure it is a safe_html string
+      // option:[{'name':'first tag'},{'name':'second tag'}, {"name":"third tag"}]
+      create: function(input) {
+        return { name: input }
+      }
+    });
+  });
+</script> 
