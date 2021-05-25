@@ -20928,3 +20928,16 @@ Processing by Api::V1::QuestionsController#create as JSON
 Completed 422 Unprocessable Entity in 13ms (Views: 2.2ms | ActiveRecord: 4.6ms | Allocations: 5277)
 
 
+Started GET "/" for ::1 at 2021-05-24 19:17:39 -0700
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (Duration: 26.9ms | Allocations: 3108)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 124.0ms | Allocations: 17977)
+Completed 200 OK in 148ms (Views: 125.7ms | ActiveRecord: 9.8ms | Allocations: 20827)
+
+
