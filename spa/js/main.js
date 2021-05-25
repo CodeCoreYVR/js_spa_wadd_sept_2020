@@ -10,4 +10,17 @@ const Question = {
         })
     },
 }
-Question.index();
+
+Question.index()
+    .then(questions => {
+        const questionsContainer = document.querySelector('ul.question-list');
+        questionsContainer.innerHTML = questions.map(q => {
+            return `
+            <li>
+            ${q.id} - ${q.title}
+            </li>
+            `
+        }).join('');
+    })
+
+
