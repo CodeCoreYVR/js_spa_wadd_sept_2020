@@ -20941,3 +20941,36 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 148ms (Views: 125.7ms | ActiveRecord: 9.8ms | Allocations: 20827)
 
 
+Started GET "/api/v1/questions" for ::1 at 2021-05-25 09:59:46 -0700
+Started GET "/api/v1/questions" for ::1 at 2021-05-25 09:59:46 -0700
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::QuestionsController#index as JSON
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mQuestion Load (6.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+  [1m[36mQuestion Load (3.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.29ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (108.12ms)
+Completed 200 OK in 287ms (Views: 191.2ms | ActiveRecord: 39.1ms | Allocations: 82692)
+
+
+Completed 200 OK in 286ms (Views: 176.1ms | ActiveRecord: 30.7ms | Allocations: 82681)
+
+
+Started GET "/api/v1/questions" for ::1 at 2021-05-25 10:00:44 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mQuestion Load (5.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.06ms)
+Completed 200 OK in 59ms (Views: 41.3ms | ActiveRecord: 5.7ms | Allocations: 32642)
+
+
+Started GET "/api/v1/questions" for ::1 at 2021-05-25 10:00:45 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.21ms)
+Completed 200 OK in 43ms (Views: 39.9ms | ActiveRecord: 1.5ms | Allocations: 32641)
+
+
