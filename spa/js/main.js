@@ -1,3 +1,19 @@
+// Single Page Application
+
+// When you are using fetch, you are only able to make requests to your sites domains
+// unless another site gives your request permission. 
+// This is a security implemented in browser and is not applicable anywhere.
+
+// To allow CORS in Rails, you need to do the following:
+// 1. Add "rack-cors" gem into your gemfile
+// 2. Run bundle to install it
+// 3. Create a file called cors.rb inside config/initializers/
+// 4. Follow documentation to complete your configuration 
+// 5. Edit your cors.rb file to match the one that we have in Awesome Answers API.
+// You will see more info inside cors.rb
+
+
+
 const BASE_URL = `http://localhost:3000/api/v1`
 
 const Question = {
@@ -27,6 +43,9 @@ const Question = {
     },
 
 }
+
+// Creating a Session for our user
+// Mocking up the login
 
 const Session = {
     create(params){
@@ -65,6 +84,8 @@ function loadQuestions(){
 
 loadQuestions();
 
+
+// Question new
 const newQuestionForm = document.querySelector('#new-question-form');    
 newQuestionForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -109,8 +130,7 @@ questionsContainer.addEventListener('click', event => {
     const questionElement = event.target;
     if(questionElement.matches('a.question-link')){
         const questionId = event.target.dataset.id
-        console.log(questionId);
-        // navigateTo('question-show');
+        renderQuestionShow(questionId);
     }
 })
 
