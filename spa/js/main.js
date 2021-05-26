@@ -28,7 +28,7 @@ const Session = {
         return fetch(`${BASE_URL}/session`, {
             method: 'POST',
             credentials: 'include',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(params)
@@ -42,18 +42,20 @@ Session.create({
 }).then(console.log);
 
 
+function loadQuestions(){
+    Question.index()
+        .then(questions => {
+            const questionsContainer = document.querySelector('ul.question-list');
+            questionsContainer.innerHTML = questions.map(q => {
+                return `
+                <li>
+                ${q.id} - ${q.title}
+                </li>
+                `
+            }).join('');
+        })
+}
 
-Question.index()
-    .then(questions => {
-        const questionsContainer = document.querySelector('ul.question-list');
-        questionsContainer.innerHTML = questions.map(q => {
-            return `
-            <li>
-            ${q.id} - ${q.title}
-            </li>
-            `
-        }).join('');
-    })
 
 const newQuestionForm = document.querySelector('#new-question-form');    
 newQuestionForm.addEventListener('submit', (event) => {
