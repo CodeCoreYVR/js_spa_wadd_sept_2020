@@ -73,13 +73,27 @@ newQuestionForm.addEventListener('submit', (event) => {
     })
 })
 
+function navigateTo(id) { 
+    // Navigate remove the active class and re-apply it to a specific node
+    // Id will be one of: welcome, question-index, question-new, question-show
+    document.querySelectorAll('.page').forEach(node => {
+        // Remove the active class from every page node
+        node.classList.remove('active');
+    });
+    document.querySelector(`.page#${id}`).classList.add('active');
+}
+
+
 // Add Navigation
 const navbar = document.querySelector('nav.navbar')
 navbar.addEventListener('click', (event) => {
     event.preventDefault();
     const node = event.target
     const page = node.dataset.target;
-    console.log(page);
+    if(page){
+        navigateTo(page);
+    }
 });
+
 
 
