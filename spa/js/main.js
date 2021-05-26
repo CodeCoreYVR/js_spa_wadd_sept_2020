@@ -21,6 +21,11 @@ const Question = {
         }).then((res) => res.json());
     },
 
+    show(id){
+        return fetch(`${BASE_URL}/questions/${id}`)
+        .then(res => res.json());
+    },
+
 }
 
 const Session = {
@@ -49,7 +54,9 @@ function loadQuestions(){
             questionsContainer.innerHTML = questions.map(q => {
                 return `
                 <li>
+                <a class="question-link" data-id="${q.id}" href="">
                 ${q.id} - ${q.title}
+                </a>
                 </li>
                 `
             }).join('');
@@ -95,5 +102,25 @@ navbar.addEventListener('click', (event) => {
     }
 });
 
+// Question show
+const questionsContainer = document.querySelector('ul.question-list')
+questionsContainer.addEventListener('click', event => {
+    event.preventDefault();
+    const questionElement = event.target;
+    if(questionElement.matches('a.question-link')){
+        const questionId = event.target.dataset.id
+        console.log(questionId);
+        // navigateTo('question-show');
+    }
+})
 
+function renderQuestionShow(id) {
+    Question.show(id)
+    .then(question => {
+        console.log(question);
+    })
+    // Send an AJAX request to get one question
+    // Create elements on the question show page
+    // Navigate to question show page
+}
 
