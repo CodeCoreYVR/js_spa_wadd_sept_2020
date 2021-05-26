@@ -73,4 +73,13 @@ newQuestionForm.addEventListener('submit', (event) => {
     })
 })
 
+// Add Navigation
+const navbar = document.querySelector('nav.navbar')
+navbar.addEventListener('click', (event) => {
+    event.preventDefault();
+    const node = event.target
+    const page = node.dataset.target;
+    console.log(page);
+});
+
 
