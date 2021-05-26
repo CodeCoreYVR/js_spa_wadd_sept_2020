@@ -23299,3 +23299,159 @@ Processing by Api::V1::SessionsController#create as JSON
 Completed 200 OK in 326ms (Views: 1.6ms | ActiveRecord: 1.7ms | Allocations: 1704)
 
 
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:53:27 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 400ms (Views: 1.4ms | ActiveRecord: 4.7ms | Allocations: 1705)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:53:31 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 325ms (Views: 2.0ms | ActiveRecord: 6.0ms | Allocations: 1705)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:53:32 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 278ms (Views: 1.5ms | ActiveRecord: 1.3ms | Allocations: 1708)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:54:33 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 304ms (Views: 18.6ms | ActiveRecord: 2.0ms | Allocations: 1704)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:54:37 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (16.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 328ms (Views: 1.6ms | ActiveRecord: 16.8ms | Allocations: 1704)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:54:40 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+Started GET "/api/v1/questions" for ::1 at 2021-05-26 09:54:40 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mUser Load (10.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 267ms (Views: 1.7ms | ActiveRecord: 11.1ms | Allocations: 2603)
+
+
+  [1m[36mQuestion Load (253.8ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (79.7ms)
+Completed 200 OK in 362ms (Views: 96.2ms | ActiveRecord: 253.8ms | Allocations: 35625)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:54:41 -0700
+Started GET "/api/v1/questions" for ::1 at 2021-05-26 09:54:41 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mQuestion Load (257.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (63.91ms)
+Completed 200 OK in 337ms (Views: 72.6ms | ActiveRecord: 257.3ms | Allocations: 34714)
+
+
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 340ms (Views: 74.0ms | ActiveRecord: 10.3ms | Allocations: 35431)
+
+
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:55:13 -0700
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+Started GET "/api/v1/questions" for ::1 at 2021-05-26 09:55:13 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mUser Load (14.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mQuestion Load (250.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 362ms (Views: 57.4ms | ActiveRecord: 15.8ms | Allocations: 36568)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (46.04ms)
+Completed 200 OK in 329ms (Views: 60.8ms | ActiveRecord: 250.7ms | Allocations: 35471)
+
+
+Started GET "/api/v1/questions" for ::1 at 2021-05-26 09:55:32 -0700
+Started POST "/api/v1/session" for ::1 at 2021-05-26 09:55:32 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+Processing by Api::V1::SessionsController#create as JSON
+  Parameters: {"email"=>"js@winterfell.gov", "password"=>"[FILTERED]", "session"=>{"email"=>"js@winterfell.gov", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "js@winterfell.gov"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/sessions_controller.rb:4:in `create'
+  [1m[36mQuestion Load (254.7ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.42ms)
+Completed 200 OK in 316ms (Views: 50.6ms | ActiveRecord: 254.7ms | Allocations: 35516)
+
+
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 312ms (Views: 50.5ms | ActiveRecord: 3.2ms | Allocations: 35356)
+
+
+Started POST "/api/v1/questions" for ::1 at 2021-05-26 09:56:25 -0700
+Processing by Api::V1::QuestionsController#create as JSON
+  Parameters: {"title"=>"Testing loadQuestion function", "body"=>"Testing loadQuestions function here. This is the body.", "question"=>{"title"=>"Testing loadQuestion function", "body"=>"Testing loadQuestions function here. This is the body."}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:27:in `create'
+  [1m[36mQuestion Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."title" = $1 LIMIT $2[0m  [["title", "Testing loadQuestion function"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/questions_controller.rb:27:in `create'
+  [1m[36mQuestion Create (5.9ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at", "view_count", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Testing loadquestion function"], ["body", "Testing loadQuestions function here. This is the body."], ["created_at", "2021-05-26 16:56:25.913815"], ["updated_at", "2021-05-26 16:56:25.913815"], ["view_count", 0], ["user_id", 1]]
+  ↳ app/controllers/api/v1/questions_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:27:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 200 OK in 47ms (Views: 1.7ms | ActiveRecord: 29.8ms | Allocations: 4464)
+
+
+Started GET "/api/v1/questions" for ::1 at 2021-05-26 09:56:26 -0700
+Processing by Api::V1::QuestionsController#index as JSON
+  [1m[36mQuestion Load (2.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/questions_controller.rb:7:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (38.81ms)
+Completed 200 OK in 60ms (Views: 54.0ms | ActiveRecord: 2.4ms | Allocations: 33748)
+
+

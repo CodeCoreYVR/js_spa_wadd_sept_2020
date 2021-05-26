@@ -56,6 +56,7 @@ function loadQuestions(){
         })
 }
 
+loadQuestions();
 
 const newQuestionForm = document.querySelector('#new-question-form');    
 newQuestionForm.addEventListener('submit', (event) => {
@@ -68,7 +69,7 @@ newQuestionForm.addEventListener('submit', (event) => {
     }
     Question.create(newQuestionParams)
     .then(data => {
-        console.log(data);
+        loadQuestions();
     })
 })
 
