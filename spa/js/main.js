@@ -97,7 +97,8 @@ newQuestionForm.addEventListener('submit', (event) => {
     }
     Question.create(newQuestionParams)
     .then(data => {
-        loadQuestions();
+        //loadQuestions();
+        renderQuestionShow(data.id);
     })
 })
 
@@ -135,9 +136,17 @@ questionsContainer.addEventListener('click', event => {
 })
 
 function renderQuestionShow(id) {
+    const showPage = document.querySelector('.page#question-show');
     Question.show(id)
     .then(question => {
-        console.log(question);
+        const questionHTML = `
+        <h2>${question.title}</h2>
+        <p>${question.body}</p>
+        <small>Authored by: ${question.author.first_name} ${question.author.last_name}</small>
+        <small>Liked by: ${question.like_count}</small>
+        `
+        showPage.innerHTML = questionHTML;
+        navigateTo('question-show');
     })
     // Send an AJAX request to get one question
     // Create elements on the question show page
