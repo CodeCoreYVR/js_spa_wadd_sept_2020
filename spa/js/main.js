@@ -42,6 +42,17 @@ const Question = {
         .then(res => res.json());
     },
 
+    update(id, params){
+        return fetch(`${BASE_URL}/questions/${id}`, {
+            method: 'PATCH',
+            credentials: 'include',
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(params)
+        }).then(res => res.json());
+    }
+
 }
 
 // Creating a Session for our user
@@ -161,7 +172,9 @@ function renderQuestionShow(id) {
         <h2>${question.title}</h2>
         <p>${question.body}</p>
         <small>Authored by: ${question.author.first_name} ${question.author.last_name}</small>
-        <small>Liked by: ${question.like_count}</small>
+        <small>Liked by: ${question.like_count}</small><br>
+        <a data-target="question-edit" data-id="${question.id}" href="">Edit</a><br>
+        <a data-target="delete-question" data-id="${question.id}" href="">Delete</a><br>
         `
         showPage.innerHTML = questionHTML;
         navigateTo('question-show');
@@ -171,3 +184,43 @@ function renderQuestionShow(id) {
     // Navigate to question show page
 }
 
+document.querySelector('#question-show').addEventListener('click', (event) => {
+    event.preventDefault();
+    const questionId = event.target.dataset.id
+    const actionNeededToBePerformed = event.target.dataset.target
+    if(questionId){
+        // console.log(questionId);
+        if(actionNeededToBePerformed === 'delete-question'){
+            console.log(`Delete: ${questionId}`)
+        } else {
+            console.log(`Edit: ${questionId}`)
+            populateForm(questionId);
+            navigateTo('question-edit');
+        }
+    }
+})
+
+function populateForm(id){
+    Question.show(id).then(questionData => {
+        // console.log(questionData)
+        document.querySelector('#edit-question-form [name=title]').value=questionData.title;
+        document.querySelector('#edit-question-form [name=body]').value=questionData.body;
+        document.querySelector('#edit-question-form [name=id]').value=questionData.id;
+    })
+}
+
+const editQuestionForm = document.querySelector('#edit-question-form'); // Selecting a form from this querySelector
+editQuestionForm.addEventListener('submit', (event) => { // Attaching a submit event with this form
+    event.preventDefault();
+    const editFormData = new FormData(event.currentTarget); // Grabbing data from the form using FormData
+    const updatedQuestionParams = { // Creating object of edited data
+        title: editFormData.get('title'),
+        body: editFormData.get('body')
+    }
+    // console.log(updatedQuestionParams);
+    Question.update(editFormData.get('id'), updatedQuestionParams)
+    .then(question => {
+        editQuestionForm.reset();
+        renderQuestionShow(question.id);
+    })
+})

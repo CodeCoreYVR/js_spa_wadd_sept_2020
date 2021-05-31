@@ -6,3 +6,6 @@
     display: block;
 }
 
+.error-message {
+    color:red;
+}
