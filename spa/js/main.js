@@ -28,12 +28,12 @@ const Question = {
 
     create(params){
         return fetch(`${BASE_URL}/questions`, {
-           method: 'POST',
-           credentials: 'include', 
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(params) 
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
         }).then((res) => res.json());
     },
 
@@ -68,25 +68,25 @@ Session.create({
 
 function loadQuestions(){
     Question.index()
-        .then(questions => {
-            const questionsContainer = document.querySelector('ul.question-list');
-            questionsContainer.innerHTML = questions.map(q => {
-                return `
-                <li>
-                <a class="question-link" data-id="${q.id}" href="">
-                ${q.id} - ${q.title}
-                </a>
-                </li>
-                `
-            }).join('');
-        })
+    .then(questions => {
+        const questionsContainer = document.querySelector('ul.question-list');
+        questionsContainer.innerHTML = questions.map(q => {
+            return `
+            <li>
+            <a class="question-link" data-id="${q.id}" href="">
+            ${q.id} - ${q.title}
+            </a>
+            </li>
+            `
+        }).join('');
+    })
 }
 
 loadQuestions();
 
 
 // Question new
-const newQuestionForm = document.querySelector('#new-question-form');    
+const newQuestionForm = document.querySelector('#new-question-form');
 newQuestionForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const form = event.currentTarget
@@ -97,8 +97,26 @@ newQuestionForm.addEventListener('submit', (event) => {
     }
     Question.create(newQuestionParams)
     .then(data => {
-        //loadQuestions();
-        renderQuestionShow(data.id);
+        if (data.errors){
+            const newQuestionForm = document.querySelector('#new-question-form');
+            // remove exiting errors if any
+            newQuestionForm.querySelectorAll('p.error-message').forEach(node => {
+                node.remove(); // Query for existing p tags within the parent element, if there is, remove it.
+            })
+            for (const key in data.errors) {
+                const errorMessages = data.errors[key].join(', '); // getting all the error messages
+
+                const errorMessageNode = document.createElement('p'); // creating a node
+                errorMessageNode.classList.add('error-message');
+                errorMessageNode.innerText = errorMessages;
+
+                const input = newQuestionForm.querySelector(`#${key}`); // adding node to DOM
+
+                input.parentNode.insertBefore(errorMessageNode, input);
+            }
+        } else {
+            renderQuestionShow(data.id);
+        }
     })
 })
 
