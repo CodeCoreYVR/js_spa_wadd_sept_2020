@@ -51,6 +51,13 @@ const Question = {
             },
             body: JSON.stringify(params)
         }).then(res => res.json());
+    },
+
+    destroy(id){
+        return fetch(`${BASE_URL}/questions/${id}`, {
+            method: 'DELETE',
+            credentials: 'include',
+        })
     }
 
 }
@@ -67,7 +74,7 @@ const Session = {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(params)
-        })
+        }).then(res => res.json())
     }
 }
 
@@ -192,6 +199,9 @@ document.querySelector('#question-show').addEventListener('click', (event) => {
         // console.log(questionId);
         if(actionNeededToBePerformed === 'delete-question'){
             console.log(`Delete: ${questionId}`)
+            Question.destroy(questionId).then(question => {
+                navigateTo('question-index');
+            })
         } else {
             console.log(`Edit: ${questionId}`)
             populateForm(questionId);

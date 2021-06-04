@@ -64,7 +64,8 @@ class Question < ApplicationRecord
   # 2. Named arguments corresponding to the validation rules
   # To read more on validations: https://guides.rubyonrails.org/active_record_validations.html
   
-  validates(:title, presence: true, uniqueness: true)
+  validates(:title, presence: true, uniqueness: true, length: {minimum: 5})
+  validates(:body, presence: true, length: {minimum: 10})
   
 
   # To read an array of error messages after failing validation:
