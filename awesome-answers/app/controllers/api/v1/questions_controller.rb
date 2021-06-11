@@ -1,6 +1,6 @@
 class Api::V1::QuestionsController < Api::ApplicationController
-    before_action :find_question, only:[:show, :destroy, :update]
-    before_action :authenticate_user!, only:[:create, :destroy, :update]
+    before_action :find_question, only:[:show, :update, :destroy]
+    before_action :authenticate_user!, only:[:create, :destroy]
 
     def index
         questions = Question.order created_at: :desc
