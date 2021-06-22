@@ -98,6 +98,12 @@ Rails.application.routes.draw do
         get :current, on: :collection # -> /api/v1/users/current
       end
     end
+    # The below route will match any URL that hasn't been matched
+    # already inside of the "/api" namespace
+    # The "*" prefix in the routes path allows this route wildcard to match anything
+    # The "via" argument is requires and used to specify which method this route applies to
+    # Example: via: [:get, :post, :patch]
+    # via: :all will match all possible methods
+    match "*unmatched_route", to: "application#not_found", via: :all
   end
-
 end

@@ -154,7 +154,7 @@ class Question < ApplicationRecord
 
   def no_title_in_body
     if body&.downcase&.include?(title.downcase)
-      errors.add(:body, "must not include the title")
+      errors.add(:body, "must include the title")
     end
   end
 
