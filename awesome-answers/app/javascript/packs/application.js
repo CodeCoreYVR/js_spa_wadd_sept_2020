@@ -8,6 +8,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
 import "./selectize"
+import "underscore"
 window.jQuery=$;
 window.$=$;
 

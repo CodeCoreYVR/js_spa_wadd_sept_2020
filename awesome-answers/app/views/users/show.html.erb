@@ -1,0 +1,28 @@
+<h1>User Profile</h1>
+<h3>User Name: <%= @user.full_name %></h3>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+        {
+        // "lat": 48.8584, // Eiffel Tower latitude
+        // "lng": 2.2945, // Eiffel Tower longitude
+        "lat": <%= @user.latitude %>,
+        "lng": <%= @user.longitude %>,
+        "picture": {
+            "width":  32,
+            "height": 32
+        },
+        "infowindow": "<%= @user.full_name %>'s location"
+        }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(17); // We are adding this to zoom in a bit
+    });
+</script>

@@ -66,7 +66,7 @@ Rails.application.routes.draw do
     # DELETE /likes/:id
   end
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 
   # resource is singular if we perform CRUD actions on a single
   # thing and not a collection of resources. There's no index 

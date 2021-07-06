@@ -34,6 +34,12 @@ class User < ApplicationRecord
     uniqueness: true,
     format: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,
   )
+  # GEOCODE
+  # We are stating that we will be converting the address with Geocode.  
+  geocoded_by :address
+  # And then when a user saves an address, it will automatically convert to longitude and latitude.
+  # And will automatically be saved in the respective user columns.
+  after_validation :geocode
 
   def full_name
     "#{first_name} #{last_name}".strip
