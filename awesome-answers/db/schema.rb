@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 2021_07_06_175131) do
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "gifts", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.float "amount"
-    t.string "txn_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "job_posts", force: :cascade do |t|
     t.string "title"
     t.text "description"
