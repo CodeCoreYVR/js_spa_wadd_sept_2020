@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'callbacks/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   post("/contact", { to: "contact#create" })
@@ -77,6 +78,15 @@ Rails.application.routes.draw do
   # POST /session
   # DELETE /session
   resource :session, only: [:new, :create, :destroy]
+
+  get "/auth/github", as: :sign_in_with_github
+  # The variable part :provider allow us to use the same controller
+  # and action for different authentication systems such as Facebook and Google.
+  # It would be the same as:
+  # get "/auth/github/callback", to: "callbacks#index"
+  # get "/auth/facebook/callback", to: "callbacks#index"
+  # get "/auth/twitter/callback", to: "callbacks#index"
+  get "/auth/:provider/callback", to: "callbacks#index"
 
   resources :job_posts
 

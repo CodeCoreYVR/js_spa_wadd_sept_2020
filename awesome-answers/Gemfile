@@ -40,6 +40,8 @@ gem 'gmaps4rails'
 # Don't forget to install Underscore with Yarn too: yarn add underscore
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 
+#OAuth gem:
+gem 'omniauth-github', '~> 1.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
