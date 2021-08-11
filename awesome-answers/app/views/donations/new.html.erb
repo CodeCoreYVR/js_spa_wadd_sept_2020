@@ -1,0 +1,18 @@
+<h1> This is new donation page </h1>
+
+<% if @donation.errors.any? %>
+    <% @donation.errors.full_messages.each do |message| %>
+        <div class="alert alert-danger" role="alert">
+            <%= message %>
+        </div>    
+    <% end %>
+<% end %>
+
+<%= form_for @donation, url: answer_donations_path  do |f| %>
+    <div class="form-group">
+        <%= f.label :amount, class: "form-label" %>
+        <%= f.number_field :amount, class: "form-control" %>
+    </div>
+
+    <%= f.submit class: "btn btn-success" %>
+<% end %>

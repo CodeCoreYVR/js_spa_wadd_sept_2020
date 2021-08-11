@@ -25,5 +25,7 @@ class Answer < ApplicationRecord
   # create_question!(attributes = {})
   # reload_question
 
+  has_many :donations
+
   validates :body, presence: true
 end
