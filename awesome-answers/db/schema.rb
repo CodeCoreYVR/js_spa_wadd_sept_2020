@@ -10,19 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_172353) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2021_08_10_161038) do
 
   create_table "answers", force: :cascade do |t|
     t.text "body"
-    t.bigint "question_id", null: false
+    t.integer "question_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "donations", force: :cascade do |t|
+    t.integer "amount"
+    t.text "status"
+    t.text "security_key"
+    t.integer "giver_id", null: false
+    t.integer "receiver_id", null: false
+    t.integer "answer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["answer_id"], name: "index_donations_on_answer_id"
+    t.index ["giver_id"], name: "index_donations_on_giver_id"
+    t.index ["receiver_id"], name: "index_donations_on_receiver_id"
   end
 
   create_table "job_posts", force: :cascade do |t|
@@ -33,13 +44,13 @@ ActiveRecord::Schema.define(version: 2021_07_12_172353) do
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "question_id"
+    t.integer "user_id"
+    t.integer "question_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_likes_on_question_id"
@@ -52,13 +63,13 @@ ActiveRecord::Schema.define(version: 2021_07_12_172353) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "view_count"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.bigint "question_id"
-    t.bigint "tag_id"
+    t.integer "question_id"
+    t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_taggings_on_question_id"
@@ -91,6 +102,9 @@ ActiveRecord::Schema.define(version: 2021_07_12_172353) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "donations", "answers"
+  add_foreign_key "donations", "users", column: "giver_id"
+  add_foreign_key "donations", "users", column: "receiver_id"
   add_foreign_key "job_posts", "users"
   add_foreign_key "likes", "questions"
   add_foreign_key "likes", "users"

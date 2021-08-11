@@ -60,7 +60,11 @@ Rails.application.routes.draw do
     # becomes
     # DELETE answers/:id
 
-    resources :answers, only: [:create, :destroy], shallow: true
+    resources :answers, only: [:create, :destroy], shallow: true do
+
+      resources :donations, only: [:new, :create]
+      get "/donations/complete", to: "donations#complete"
+    end
     
     resources :likes, only: [:create, :destroy]
     # POST /questions/:question_id/likes

@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_questions, through: :likes, source: :question
 
+  has_many :gifts, class_name: "Donation", foreign_key: "giver_id"
+  has_many :donations, class_name: "Donation", foreign_key: "receiver_id"
+
   has_secure_password
   # Provides user authentication features on the model that it is
   # called in. It requires a column named "password_digest" to store

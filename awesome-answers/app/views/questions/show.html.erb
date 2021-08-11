@@ -113,6 +113,23 @@
           Answered <%= time_ago_in_words(answer.created_at) %> ago 
           by <%= answer.user&.full_name || "[deleted]" %>
         </small>
+
+
+        <% if current_user %>
+          <br/>
+          <small>
+          <%= link_to(
+            'Donate', 
+            new_answer_donation_path(answer),
+          ) %>
+          </small>
+
+           -
+          <small>
+            Donate some money to this user
+          </small>
+        <% end %>
+       
       </p>
     </li>
   <% end %>
